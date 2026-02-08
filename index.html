@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Mambises de Cuba - Guerras de Independencia 1868-1898</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Georgia', serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        /* Header patriótico */
+        header {
+            background: linear-gradient(135deg, #002A54 0%, #8B0000 50%, white 50%, white 100%);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flag-overlay {
+            background: 
+                linear-gradient(135deg, transparent 0%, transparent 33%, 
+                #8B0000 33%, #8B0000 66%, 
+                #002A54 66%, #002A54 100%);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .header-content {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border: 3px solid #D4AF37;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header-content h1 {
+            font-size: 3.5em;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header-content .subtitle {
+            font-size: 1.5em;
+            color: #8B0000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .header-content .years {
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: #2a2a2a;
+            padding: 50px;
+            margin-bottom: 50px;
+            border: 3px solid #D4AF37;
+            border-radius: 10px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5em;
+            color: #D4AF37;
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 3px solid #8B0000;
+            padding-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #d0d0d0;
+        }
+        
+        /* Timeline section */
+        .timeline-intro {
+            background: #8B0000;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        
+        .timeline-intro h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        /* Grid de guerras */
+        .wars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
+        }
+        
+        .war-card {
+            background: #2a2a2a;
+            padding: 35px;
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .war-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border-color: #8B0000;
+        }
+        
+        .war-card h3 {
+            font-size: 2em;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+        
+        .war-card .war-years {
+            font-size: 1.3em;
+            color: #8B0000;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .war-card p {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .war-card a {
+            display: inline-block;
+            background: #8B0000;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #D4AF37;
+            transition: all 0.3s;
+        }
+        
+        .war-card a:hover {
+            background: #D4AF37;
+            color: #1a1a1a;
+        }
+        
+        /* Sections grid */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .section-card {
+            background: #2a2a2a;
+            padding: 30px;
+            border-left: 5px solid #D4AF37;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .section-card:hover {
+            background: #333;
+            border-left-color: #8B0000;
+        }
+        
+        .section-card h3 {
+            font-size: 1.8em;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+        
+        .section-card p {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+        }
+        
+        .section-card a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .section-card a:hover {
+            color: #D4AF37;
+        }
+        
+        /* Quote section */
+        .quote-section {
+            background: #002A54;
+            color: white;
+            padding: 50px;
+            text-align: center;
+            margin: 50px 0;
+            border: 3px double #D4AF37;
+            border-radius: 10px;
+        }
+        
+        .quote-section blockquote {
+            font-size: 1.8em;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .quote-section cite {
+            font-size: 1.2em;
+            color: #D4AF37;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 5px solid #D4AF37;
+            color: #d0d0d0;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        .footer-flag {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flag-overlay">
+            <div class="header-content">
+                <h1>⭐ Los Mambises de Cuba ⭐</h1>
+                <div class="subtitle">Guerras de Independencia</div>
+                <div class="years">1868 - 1898</div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero">
+            <h2>🇨🇺 La Lucha por la Libertad 🇨🇺</h2>
+            <p>
+                Durante treinta años, el pueblo cubano luchó por su independencia del imperio español. 
+                Miles de hombres y mujeres, conocidos como <strong>mambises</strong>, sacrificaron sus vidas, 
+                familias y fortunas por la libertad de Cuba.
+            </p>
+            <p>
+                Este sitio honra su memoria, preserva su historia y cuenta las historias individuales 
+                de aquellos que pelearon en los campos de Cuba por la independencia de la patria.
+            </p>
+        </div>
+        
+        <!-- Timeline intro -->
+        <div class="timeline-intro">
+            <h2>⚔️ Tres Décadas de Guerra ⚔️</h2>
+            <p style="font-size: 1.2em; margin-top: 15px;">
+                La lucha se dividió en tres conflictos principales que marcaron 
+                la historia de Cuba y América Latina
+            </p>
+        </div>
+        
+        <!-- Wars Grid -->
+        <div class="wars-grid">
+            
+            <div class="war-card">
+                <h3>Guerra de los Diez Años</h3>
+                <div class="war-years">1868 - 1878</div>
+                <p>
+                    El 10 de octubre de 1868, Carlos Manuel de Céspedes dio el Grito de Yara, 
+                    iniciando la primera guerra de independencia. Diez años de lucha que 
+                    sembrarían la semilla de la libertad.
+                </p>
+                <a href="diez-anos.html">Conocer Más →</a>
+            </div>
+            
+            <div class="war-card">
+                <h3>Guerra Chiquita</h3>
+                <div class="war-years">1879 - 1880</div>
+                <p>
+                    Insatisfechos con el Pacto del Zanjón, los mambises se alzaron nuevamente. 
+                    Aunque breve, la Guerra Chiquita demostró que el espíritu independentista 
+                    seguía vivo.
+                </p>
+                <a href="guerra-chiquita.html">Conocer Más →</a>
+            </div>
+            
+            <div class="war-card">
+                <h3>Guerra de Independencia</h3>
+                <div class="war-years">1895 - 1898</div>
+                <p>
+                    El 24 de febrero de 1895, José Martí y otros líderes iniciaron la guerra 
+                    definitiva. Tres años de sacrificio culminarían en la independencia de Cuba, 
+                    aunque con la intervención estadounidense.
+                </p>
+                <a href="independencia.html">Conocer Más →</a>
+            </div>
+            
+        </div>
+        
+        <!-- Quote -->
+        <div class="quote-section">
+            <blockquote>
+                "Morir por la patria es vivir"
+            </blockquote>
+            <cite>— José Martí</cite>
+        </div>
+        
+        <!-- Sections -->
+        <div class="sections-grid">
+            
+            <div class="section-card">
+                <h3>⭐ Héroes y Mambises</h3>
+                <p>
+                    Biografías de los grandes líderes y soldados que pelearon por Cuba: 
+                    Maceo, Gómez, Agramonte, Martí, Céspedes y miles más.
+                </p>
+                <a href="heroes.html">Ver Biografías →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>⚔️ Batallas Principales</h3>
+                <p>
+                    Cronología y análisis de las batallas decisivas: Mal Tiempo, Coliseo, 
+                    Jimaguayú, Peralejo y muchas más.
+                </p>
+                <a href="batallas.html">Explorar Batallas →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>📜 Documentos Históricos</h3>
+                <p>
+                    Manifiestos, cartas, proclamas y documentos originales de la época. 
+                    El Grito de Yara, el Manifiesto de Montecristi y más.
+                </p>
+                <a href="documentos.html">Leer Documentos →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>🗺️ Mapas de Campaña</h3>
+                <p>
+                    Mapas interactivos de las invasiones, rutas de combate y territorios 
+                    liberados durante las tres guerras.
+                </p>
+                <a href="mapas.html">Ver Mapas →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>📸 Galería Fotográfica</h3>
+                <p>
+                    Fotografías históricas de mambises, campamentos, armas, uniformes 
+                    y la Cuba de esa época.
+                </p>
+                <a href="galeria.html">Ver Fotos →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>👥 Buscar Antepasados</h3>
+                <p>
+                    Base de datos genealógica. Busca si algún familiar luchó en las guerras 
+                    de independencia. Listas de combatientes por provincia y unidad.
+                </p>
+                <a href="genealogia.html">Buscar →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>📚 Biblioteca</h3>
+                <p>
+                    Libros, memorias, diarios y estudios históricos sobre las guerras 
+                    de independencia disponibles para consulta.
+                </p>
+                <a href="biblioteca.html">Explorar →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>🎓 Recursos Educativos</h3>
+                <p>
+                    Material para maestros, estudiantes e investigadores. Líneas de tiempo, 
+                    ensayos y guías de estudio.
+                </p>
+                <a href="educacion.html">Recursos →</a>
+            </div>
+            
+            <div class="section-card">
+                <h3>🎖️ Mujeres Mambisas</h3>
+                <p>
+                    Las heroínas olvidadas: Mariana Grajales, Rosa la Bayamesa, Canducha Figueredo 
+                    y las miles de mujeres que lucharon por Cuba.
+                </p>
+                <a href="mujeres.html">Conocer →</a>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <footer>
+        <div class="footer-flag">🇨🇺</div>
+        <p><strong>Los Mambises de Cuba</strong></p>
+        <p>Guerras de Independencia 1868-1898</p>
+        <p style="margin-top: 20px; font-size: 0.9em;">
+            Preservando la memoria de quienes lucharon por la libertad de Cuba
+        </p>
+        <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.7;">
+            📧 Contacto: [email] | 🇨🇺 Proyecto histórico sin fines de lucro © 2026
+        </p>
+    </footer>
+</body>
+</html>
